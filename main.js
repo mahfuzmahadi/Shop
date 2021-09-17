@@ -1,40 +1,57 @@
 
-             function updateProductNumber(product, price, isIncreasing) {
-                const productInput = document.getElementById(product + '-number');
-                let productNumber = productInput.value;
-                if (isIncreasing == true) {
-                    productNumber = parseInt(productNumber) + 1;
-                }
-                else if (productNumber > 0) {
-                    productNumber = parseInt(productNumber) - 1;
-                }
-                productInput.value = productNumber;
-                // update total
-                const productTotal = document.getElementById(product + '-total');
-                productTotal.innerText = productNumber * price;
-                // calculate total
-                calculateTotal();
-         }
-            function getInputValue(product) {
-             const productInput = document.getElementById(product + '-number');
-             const productNumber = parseInt(productInput.value);
-             return productNumber;
-         }
-            function calculateTotal() {
+    function updateProductNumber(product, price, isIncreasing) 
+        {
+            const productInput = document.getElementById(product + '-number');
+            let productNumber = productInput.value;
+            if (isIncreasing == true) {
+            productNumber = parseInt(productNumber) + 1;
+            }
+            else if (productNumber > 0) {
+            productNumber = parseInt(productNumber) - 1;
+            }
+            productInput.value = productNumber;
+            // update total
+            const productTotal = document.getElementById(product + '-total');
+            productTotal.innerText = productNumber * price;
+            // calculate total
+            calculateTotal();
+        }
+
+
+
+    function getInputValue(product) 
+        {
+            const productInput = document.getElementById(product + '-number');
+            const productNumber = parseInt(productInput.value);
+            return productNumber;
+        }
+            
+    function calculateTotal() 
+        {
+
+
+
              const lemonTotal = getInputValue('lemon') * 30;
              const orangeTotal = getInputValue('orange') * 30;
              const mangoTotal = getInputValue('mango') * 30;
              const strawTotal = getInputValue('straw') * 50;
              const cocoTotal = getInputValue('coco') * 60;
              const subTotal = lemonTotal + orangeTotal + mangoTotal + strawTotal + cocoTotal;
-             const tax = subTotal / 20;
-             
+             const tax = subTotal * (.1);
              const totalPrice = subTotal + tax;
+
              // update on the html
+
              document.getElementById('sub-total').innerText = subTotal;
              document.getElementById('tax-amount').innerText = tax;
              document.getElementById('total-price').innerText = totalPrice;
-         }
+            
+        }
+
+
+
+
+
 
          // lemon increase decrease events
          document.getElementById('lemon-plus').addEventListener('click', function () {
